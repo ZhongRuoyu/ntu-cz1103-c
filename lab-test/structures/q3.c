@@ -71,7 +71,7 @@ void printEmp(Employee *emp, int size) {
 int readin(Employee *emp) {
     char *p;
     int count = 0;
-    while (1) {
+    while (count < MAX) {
         printf("Enter name:\n");
         scanf("\n");
         fgets(emp->name, 40, stdin);
@@ -102,15 +102,19 @@ int search(Employee *emp, int size, char *target) {
 }
 int addEmployee(Employee *emp, int size, char *target) {
     char *p;
-    strcpy_s((emp + size)->name, 40, target);
-    printf("Enter tel:\n");
-    scanf("\n");
-    fgets((emp + size)->telno, 40, stdin);
-    if (p = strchr((emp + size)->telno, '\n')) *p = '\0';
-    printf("Enter id:\n");
-    scanf("%d", &((emp + size)->id));
-    printf("Enter salary:\n");
-    scanf("%lf", &((emp + size)->salary));
-    printf("Added at position: %d\n", size++);
+    if (size < MAX) {
+        strncpy((emp + size)->name, target, 40);
+        printf("Enter tel:\n");
+        scanf("\n");
+        fgets((emp + size)->telno, 40, stdin);
+        if (p = strchr((emp + size)->telno, '\n')) *p = '\0';
+        printf("Enter id:\n");
+        scanf("%d", &((emp + size)->id));
+        printf("Enter salary:\n");
+        scanf("%lf", &((emp + size)->salary));
+        printf("Added at position: %d\n", size++);
+        return size;
+    }
+    printf("Database is full\n");
     return size;
 }
