@@ -78,7 +78,7 @@ int removeStud(Student *s, int *size, char *target) {
             if (!strcmp((s + i)->name, target)) {
                 for (int j = i; j < *size - 1; j++) {
                     (s + j)->id = (s + j + 1)->id;
-                    strcpy_s((s + j)->name, 50, (s + j + 1)->name);
+                    strncpy_s((s + j)->name, 50, (s + j + 1)->name, 49);
                 }
                 (*size)--;
                 return 0;
