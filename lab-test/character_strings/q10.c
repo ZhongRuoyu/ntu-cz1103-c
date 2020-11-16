@@ -18,6 +18,7 @@ void strIntersect(char *str1, char *str2, char *str3) {
         for (int i = 0; str2[i]; i++) {
             if (str2[i] == *str1) {
                 *(str3++) = *str1;
+                break;
             }
         }
         str1++;
