@@ -103,7 +103,7 @@ int search(Employee *emp, int size, char *target) {
 int addEmployee(Employee *emp, int size, char *target) {
     char *p;
     if (size < MAX) {
-        strncpy((emp + size)->name, target, 40);
+        strncpy_s((emp + size)->name, 40, target, 39);
         printf("Enter tel:\n");
         scanf("\n");
         fgets((emp + size)->telno, 40, stdin);
