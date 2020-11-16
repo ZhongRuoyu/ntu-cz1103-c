@@ -19,12 +19,10 @@ int main() {
     return 0;
 }
 char *longestStrInAr(char str[N][40], int size, int *length) {
-    int x = 0, l = 0;
+    int x = 0, l = 0, c;
     for (int i = 0; i < size; i++) {
-        int c = 0;
-        char *p = str[i];
-        while (*(p++)) c++;
-        if (l < c) {
+        c = strlen(str[i]);
+        if (c > l) {
             l = c;
             x = i;
         }
