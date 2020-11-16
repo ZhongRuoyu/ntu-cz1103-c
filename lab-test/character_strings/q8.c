@@ -21,6 +21,6 @@ void findMinMaxStr(char word[][40], char *first, char *last, int size) {
         if (word[i][0] < *min) min = word[i];
         if (word[i][0] > *max) max = word[i];
     }
-    strcpy_s(first, 40, min);
-    strcpy_s(last, 40, max);
+    strncpy_s(first, 40, min, 39);
+    strncpy_s(last, 40, max, 39);
 }
