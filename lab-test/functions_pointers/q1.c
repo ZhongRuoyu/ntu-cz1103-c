@@ -17,9 +17,5 @@ double computePay1(int noOfHours, int payRate) {
     return (noOfHours <= 160) ? noOfHours * payRate : (noOfHours - 160) * (payRate * 1.5) + 160 * payRate;
 }
 void computePay2(int noOfHours, int payRate, double *grossPay) {
-    if (noOfHours <= 160) {
-        *grossPay = noOfHours * payRate;
-    } else {
-        *grossPay = (noOfHours - 160) * (payRate * 1.5) + 160 * payRate;
-    }
+    *grossPay = (noOfHours <= 160) ? noOfHours * payRate : (noOfHours - 160) * (payRate * 1.5) + 160 * payRate;
 }
