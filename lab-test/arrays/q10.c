@@ -16,29 +16,25 @@ int main() {
     return 0;
 }
 void compress2D(int data[SIZE][SIZE], int rowSize, int colSize) {
+    int c, n, a[2 * SIZE];
     for (int i = 0; i < rowSize; i++) {
-        int a[SIZE] = {data[i][0]};
-        int p = 1;
-        int x = 0;
-        int y = 1;
+        c = 1;
+        n = 0;
         for (int j = 1; j < colSize; j++) {
-            if (data[i][j] == data[i][x]) {
-                y++;
+            if (data[i][j] == data[i][j - 1]) {
+                c++;
             } else {
-                a[p++] = y;
-                y = 1;
-                a[p++] = data[i][j];
-                x = j;
+                a[n++] = data[i][j - 1];
+                a[n++] = c;
+                c = 1;
             }
         }
-        a[p++] = y;
-        for (int k = 0; k < p; k++) {
-            data[i][k] = a[k];
-            printf("%d ", data[i][k]);
+        a[n++] = data[i][colSize - 1];
+        a[n++] = c;
+        for (int j = 0; j < n && j < SIZE; j++) {
+            data[i][j] = a[j];
+            printf("%d ", data[i][j]);
         }
         printf("\b\n");
-        for (int k = p; k < SIZE; k++) {
-            data[i][k] = 0;
-        }
     }
 }
